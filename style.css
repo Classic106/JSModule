@@ -1,0 +1,174 @@
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+label{
+    padding: 5px;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    font-family: 'OpenSans', sans-serif;
+    font-size: 14px;
+    margin: 0;
+    position: relative;
+}
+.add_event{
+    display: flex;
+    position: absolute;
+    top: 0;
+    flex-wrap: wrap;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    top: 10px;
+    justify-content: center;
+}
+.add_event_time, .add_event_title, .add_event_colors{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.add_event_time > div, .add_event_colors > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+}
+.add_event_time > div > input{
+    text-align: center;
+}
+.add_event > input{
+    margin: 10px;
+}
+.add_event_title{
+    display: flex;
+    flex-direction: column;
+}
+.add_event_title > input{
+    text-align: center;
+    padding: 5px;
+}
+.add_event_title > label{
+    align-self: center;
+}
+.calendar{
+    width: 700px;
+    top: 300px;
+    position: absolute;
+}
+.time{
+    width: 100%;
+    display: flex;
+    position: relative;
+    height: 120px;
+}
+.time::before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    top: -1px;
+    position: absolute;
+    background: grey;
+}
+.time_head{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 80px;
+}
+.time_head span{
+    padding: 5px 15px;
+    height: 50%;
+    font-size: 16px;
+    font-weight: 200;
+}
+.time_head span:last-child{
+    font-size: 12px;
+}
+.time_events{
+    width: 100%;
+    position: relative;
+    height: 100%;
+}
+.event{
+    background-color: #E2ECF5;
+    position: absolute;
+    width: 200px;
+    display: block;
+    padding: 5px;
+}
+.event::after{
+    content: '';
+    height: 1px;
+    background-color: #0003;
+    position: absolute;
+    width: 200px;
+    display: block;
+    bottom: 0;
+    left: 0;
+}
+.event > .event_back{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #523370e8;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.event > div{
+    display: block;
+    width: 3px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #6E9ECF;
+    position: absolute;
+}
+.modal{
+    display: flex;
+    position: fixed;
+    background: #000b;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+.beginning_events{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    flex-direction: column;
+}
+.beginning_events.active{
+    display: flex;
+}
+.begin_event{
+    width: 200px;
+    height: 150px;
+    background-color: #6E9ECF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid #0005;
+    margin: 10px 0;
+}
+.begin_event > span{
+    text-align: center;
+    padding: 5px;
+}
