@@ -171,7 +171,7 @@ function Add_form(item){
 
     const obj = Object.assign({}, (item) ? item[0] : {});
     const event_val = ["08:00", '18:00', '', "#E2ECF5", "#6E9ECF"];
-
+    
     const add_event = document.createElement('form');
         Object.assign(add_event, {
             className: 'add_event',
@@ -187,11 +187,11 @@ function Add_form(item){
                 <div class="add_event_colors">
                     <div>
                         <label for="body_color">Chose body color</label>
-                        <input type="color" id="body_color" name="body_color" value=${event_val[3]}>
+                        <input type="color" id="body_color" name="body_color" value=${(item && item[0].body_color) ? item[0].body_color : event_val[3]}>
                     </div>
                     <div>
                         <label for="border_color">Chose border color</label>
-                        <input type="color" id="border_color" name="border_color" value=${event_val[4]}>
+                        <input type="color" id="border_color" name="border_color" value=${(item && item[0].border_color) ? item[0].border_color : event_val[4]}>
                     </div>
                 </div>
                 <button>${(item) ? 'Change item' : 'Add event' }</button>
@@ -215,19 +215,21 @@ function Add_form(item){
                 });
                 if(index) Object.assign(time_events[index], obj);
                 else return;
-            }else time_events.push(obj);
+            }else {
+                time_events.push(obj);
+                
+                const inputs = document.querySelector('.add_event').querySelectorAll('input');
+            
+                for(let key = 0; key < inputs.length; key++){
+            
+                    inputs[key].value = event_val[key];
+                }
+            }
 
             time_events.sort((a, b)=>{
                 return a.start - b.start;
             });
             
-            const inputs = add_event.querySelectorAll('input');
-            
-            for(let key = 0; key < inputs.length; key++){
-            
-                inputs[key].value = event_val[key];
-            }
-
             RenderEvents();
         }
 
@@ -267,9 +269,11 @@ function Beginning_events(){
 
     const beginning_events = document.querySelector('.beginning_events');
     const date = new Date(Date.now());
-    //const date = new Date();
-        //date.setHours(14);
-        //date.setMinutes(20);
+    
+    /* uncomment for chech starting brginning events
+    const date = new Date();
+        date.setHours(14);
+        date.setMinutes(20);*/
     
     let arr = [];
 
