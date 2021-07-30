@@ -88,7 +88,7 @@ function RenderEvent(item, index){
     const div = document.createElement('div');
 
     Object.assign(div, {
-        innerHTML: `<div></div>${(()=>(item.title.length > 28) ? item.title.slice(0, 26)+'...' : item.title)()}`,
+        innerHTML: `<div></div>${(()=>(item.title.length > 25) ? item.title.slice(0, 22)+'...' : item.title)()}`,
         className: 'event',
         style: `margin-top: ${(item.start % 60) * 2}px;
             margin-left: ${200 * index}px;
@@ -97,10 +97,10 @@ function RenderEvent(item, index){
             `,
         onmouseenter: function(){
             this.innerHTML = `<div></div>${item.title}`;
-            if(item.title.length > 28) this.style.height = 'max-content';
+            if(item.title.length > 25) this.style.height = 'max-content';
         },
         onmouseleave: function(){
-            this.innerHTML = `<div></div>${(item.title.length > 28) ? item.title.slice(0, 26)+'...' : item.title}`;
+            this.innerHTML = `<div></div>${(item.title.length > 25) ? item.title.slice(0, 22)+'...' : item.title}`;
         },
         onclick: function(){
             if(!this.querySelector('.event_back')){
